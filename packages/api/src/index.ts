@@ -1,3 +1,4 @@
-import { initCexplorer } from "@/config";
+import { initApi, getCexplorerConfig } from "@/config";
+import { fetchBlockList } from "@/endpoints/block";
 
-export { initCexplorer };
+export { initApi, getCexplorerConfig, fetchBlockList };

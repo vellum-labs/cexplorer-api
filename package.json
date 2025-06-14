@@ -11,6 +11,11 @@
   "license": "ISC",
   "private": true,
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   }

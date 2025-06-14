@@ -6,14 +6,15 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.js"
     }
   },
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm --out-dir dist"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "query-string": "^9.2.0"
+  }
 }
