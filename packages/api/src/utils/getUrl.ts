@@ -1,4 +1,4 @@
-import type { Network } from "@/types/config";
+import type { Network } from "@/types/configTypes";
 import type { StringifiableRecord } from "query-string";
 
 import queryString from "query-string";

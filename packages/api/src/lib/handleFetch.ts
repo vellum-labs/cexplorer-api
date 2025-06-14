@@ -1,4 +1,4 @@
-import type { Network } from "@/types/config";
+import { getCexplorerConfig } from "@/config";
 import { getUrl } from "@/utils/getUrl";
 import type { StringifiableRecord } from "query-string";
 
@@ -60,12 +60,13 @@ const fetchWithTimeout = (url: string, timeout: number, options?: RequestInit): 
  * @returns A Promise resolving to the parsed API response merged with `prevOffset` and headers
  * @throws {Error} If the request fails or all retries are exhausted
  */
-export const handleFetch = async <T>(
-  url: string,
-  network: Network,
-  prevOffset?: number,
-  options?: FetchOptions
-): Promise<T & { prevOffset: number | undefined }> => {
+export const handleFetch = async <T>(url: string, prevOffset?: number, options?: FetchOptions): Promise<T & { prevOffset: number | undefined }> => {
+  const { network } = getCexplorerConfig();
+
+  if (!network) {
+    throw new Error('Missing required "network" in config.');
+  }
+
   const fullUrl = getUrl(url, network, options?.params);
   const timeout = options?.timeout ?? 30000;
   const retryCount = options?.retryCount ?? 2;

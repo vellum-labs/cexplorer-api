@@ -1,4 +1,4 @@
-import type { Network } from "@/types/config";
+import type { Network } from "@/types/configTypes";
 
 /**
  * Returns the base API URL for the given Cexplorer network.

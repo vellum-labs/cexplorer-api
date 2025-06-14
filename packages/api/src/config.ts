@@ -1,4 +1,4 @@
-import type { CexplorerConfig } from "./types/config";
+import type { CexplorerConfig } from "./types/configTypes";
 
 // Internal variable to store the current configuration
 let currentConfig: CexplorerConfig | null = null;

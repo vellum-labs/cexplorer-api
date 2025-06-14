@@ -1,6 +1,16 @@
-import { getCexplorerConfig } from "@/config";
+import type { BlockDetailParams, BlockDetailResponse, BlocksListResponse } from "@/types/blockTypes";
+
 import { handleFetch } from "@/lib/handleFetch";
-import type { BlockListProps, BlockListResponse } from "@/types/block";
+
+type BlockListProps = {
+  limit?: number;
+  offset?: number;
+  pool_id?: string;
+  epoch_no?: number;
+  hash?: string;
+  slot_no?: number;
+  block_no?: number;
+};
 
 /**
  * Fetches a list of blocks from the Cexplorer API based on provided query parameters.
@@ -20,24 +30,39 @@ import type { BlockListProps, BlockListResponse } from "@/types/block";
  *
  * @example
  * ```ts
- * const data = await fetchBlockList({ limit: 10, offset: 0 });
- * console.log(data.items);
+ * const data = await getBlockList({ limit: 10, offset: 0 });
  * ```
  *
  * @returns {Promise<BlockListResponse>} A promise resolving to a list of blocks
  * @throws {Error} If the network is not configured or request fails
  */
-export const fetchBlockList = async ({ limit = 20, offset = 0, pool_id, epoch_no, hash, slot_no, block_no }: BlockListProps) => {
-  const { network } = getCexplorerConfig();
-
-  if (!network) {
-    throw new Error('Missing required "network" in config.');
-  }
-
+export const getBlockList = async ({ limit = 20, offset = 0, pool_id, epoch_no, hash, slot_no, block_no }: BlockListProps) => {
   const url = "/block/list";
   const options = {
     params: { limit, offset, pool_id, epoch_no, hash, slot_no, block_no },
   };
 
-  return handleFetch<BlockListResponse>(url, network, offset, options);
+  return handleFetch<BlocksListResponse>(url, offset, options);
+};
+
+/**
+ * Fetches detailed information about a specific block from the Cexplorer API.
+ *
+ * This function retrieves the current configuration using `getCexplorerConfig`,
+ * validates that a network is defined, and then fetches the block detail by its hash.
+ *
+ * @example
+ * ```ts
+ * const detail = await getBlockDetail({ hash: "abc123..." });
+ * ```
+ *
+ * @param {BlockDetailArgs} args - The arguments containing the block hash.
+ * @param {string} args.hash - The hash of the block to fetch details for.
+ * @returns {Promise<BlockDetailResponse>} The detailed data of the block.
+ * @throws If the configuration is missing or the network is not defined.
+ */
+export const getBlockDetail = async ({ hash }: BlockDetailParams) => {
+  const url = `/block/detail?hash=${hash}`;
+
+  return handleFetch<BlockDetailResponse>(url);
 };
