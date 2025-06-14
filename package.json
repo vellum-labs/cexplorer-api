@@ -1,43 +1,17 @@
 {
-  "name": "cex",
-  "version": "0.0.0",
-  "type": "module",
-  "main": "./dist/core/index.cjs",
-  "module": "./dist/core/index.mjs",
-  "types": "./dist/core/index.d.ts",
-  "exports": {
-    "./core": {
-      "import": "./dist/core/index.js",
-      "types": "./dist/core/index.d.ts"
-    },
-    "./react": {
-      "import": "./dist/react/index.js",
-      "types": "./dist/react/index.d.ts"
-    }
-  },
+  "name": "cexplorer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "tsup src/core/index.ts src/react/index.ts --dts --format esm,cjs",
-    "dev": "tsup src/core/index.ts src/react/index.ts --watch --dts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "private": true,
   "devDependencies": {
-    "@types/node": "^24.0.1",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "react": "^19.1.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
-  },
-  "peerDependencies": {
-    "@tanstack/react-query": "^5.80.7",
-    "react": "^19.1.0"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
