@@ -38,7 +38,7 @@ export const initApi = (config: Partial<CexplorerConfig>) => {
  */
 export const getCexplorerConfig = (): CexplorerConfig => {
   if (!currentConfig) {
-    throw new Error('Cexplorer SDK not initialized. Call initCexplorer({ network: "..." }) first.');
+    throw new Error('Cexplorer SDK not initialized. Call initApi({ network: "..." }) first.');
   }
   return currentConfig;
 };
