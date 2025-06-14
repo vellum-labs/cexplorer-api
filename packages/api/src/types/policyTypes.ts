@@ -23,7 +23,7 @@ interface PolicyDataStats {
   total_payment_cred: number;
 }
 
-interface Policy extends AssetPolicy {
+interface Policy extends Omit<AssetPolicy, "script"> {
   stats: PolicyDataStats | null;
   script?: PolicyScript;
 }

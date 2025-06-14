@@ -1,14 +1,12 @@
-import type { JobCardano } from "@jamonbread/sdk";
-import type { WalletApi } from "lucid-cardano";
 import type { ResponseCore } from "./commonTypes";
 
 export interface WalletState {
   address: string | undefined;
   stakeKey: string | undefined;
   walletType: WalletType | undefined;
-  walletApi: WalletApi | undefined;
+  walletApi: any | undefined;
   disabledExt?: boolean;
-  job: JobCardano | null;
+  job: any | null;
 }
 
 export type WalletInfo = {
@@ -20,14 +18,7 @@ export type WalletInfo = {
   extensionUrl: string;
 };
 
-export type WalletType =
-  | "lace"
-  | "flint"
-  | "yoroi"
-  | "eternl"
-  | "nufi"
-  | "nufiSnap"
-  | "nufiSSO";
+export type WalletType = "lace" | "flint" | "yoroi" | "eternl" | "nufi" | "nufiSnap" | "nufiSSO";
 
 type CompareWalletBoolean = unknown[] | null | false | true | undefined;
 

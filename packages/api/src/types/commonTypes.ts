@@ -1,5 +1,3 @@
-import type { ReactNode } from "@tanstack/react-router";
-
 export interface ResponseCore<T> {
   code: number;
   data: T;
@@ -41,17 +39,3 @@ export type SupportedCurrencies =
   | "brl"
   | "bgn"
   | "aud";
-
-export type TabItem = {
-  key: string;
-  label: ReactNode;
-  content?: ReactNode;
-  extraTitle?: ReactNode;
-  visible: boolean;
-  title?: string;
-};
-
-export type AddressLabel = {
-  ident: string;
-  label: string;
-};

@@ -1,4 +1,3 @@
-import type { articleCategories } from "@/constants/article";
 import type { ResponseCore } from "./commonTypes";
 import type { User } from "./userTypes";
 
@@ -56,4 +55,4 @@ export type ArticleListResponse = ResponseCore<{
   data: ArticleListData[];
 }>;
 
-export type ArticleCategories = (typeof articleCategories)[number];
+export type ArticleCategories = any;

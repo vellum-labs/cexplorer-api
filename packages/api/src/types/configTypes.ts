@@ -1,10 +1,5 @@
-import type { ResponseCore } from "./commonTypes";
+export type Network = "mainnet-stage" | "preprod-stage" | "preview-stage";
 
-interface ConfigSwText {
-  message: {
-    en: string;
-    cs: string;
-  };
+export interface CexplorerConfig {
+  network?: Network;
 }
-
-export type ConfigSwTextResponse = ResponseCore<ConfigSwText>;
