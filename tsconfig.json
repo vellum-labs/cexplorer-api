@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx", 
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "lib": ["DOM", "ES2020"],
+    "types": ["react"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "outDir": "dist",
+    "declaration": true
+  },
+  "include": ["src"]
+}
