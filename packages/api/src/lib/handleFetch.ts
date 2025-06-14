@@ -2,10 +2,16 @@ import type { Network } from "@/types/config";
 import { getUrl } from "@/utils/getUrl";
 import type { StringifiableRecord } from "query-string";
 
+/**
+ * Interface for extended error object with optional HTTP status.
+ */
 interface FetchError extends Error {
   status?: number;
 }
 
+/**
+ * Additional options for API fetch requests.
+ */
 interface FetchOptions extends RequestInit {
   params?: StringifiableRecord;
   timeout?: number;
@@ -14,6 +20,15 @@ interface FetchOptions extends RequestInit {
   body?: BodyInit;
 }
 
+/**
+ * Fetch wrapper that enforces a timeout.
+ *
+ * @param url - Full request URL
+ * @param timeout - Timeout in milliseconds
+ * @param options - Standard fetch options
+ * @returns A Promise resolving to a Response or rejecting on timeout
+ * @throws Error if the request exceeds the timeout
+ */
 const fetchWithTimeout = (url: string, timeout: number, options?: RequestInit): Promise<Response> => {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => reject(new Error("Request timed out")), timeout);
@@ -29,6 +44,22 @@ const fetchWithTimeout = (url: string, timeout: number, options?: RequestInit): 
   });
 };
 
+/**
+ * Generic HTTP fetch handler for interacting with the Cexplorer API.
+ *
+ * Automatically applies base URL, query parameters, timeouts, retries,
+ * and response parsing. Also injects `prevOffset` into the final result.
+ *
+ * @template T - Expected response type
+ *
+ * @param url - Relative API endpoint path (e.g. `/block/list`)
+ * @param network - Selected Cexplorer network environment
+ * @param prevOffset - Optional offset for pagination tracking
+ * @param options - Additional fetch options including headers, params, etc.
+ *
+ * @returns A Promise resolving to the parsed API response merged with `prevOffset` and headers
+ * @throws {Error} If the request fails or all retries are exhausted
+ */
 export const handleFetch = async <T>(
   url: string,
   network: Network,
