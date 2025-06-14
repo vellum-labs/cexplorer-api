@@ -1,6 +1,6 @@
 {
-  "name": "@cex/api",
-  "version": "0.0.1",
+  "name": "@vellumlabs/cex-api",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,10 +11,18 @@
       "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm --out-dir dist"
   },
   "dependencies": {
     "query-string": "^9.2.0"
-  }
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT",
+  "author": "Cexplorer.io"
 }
