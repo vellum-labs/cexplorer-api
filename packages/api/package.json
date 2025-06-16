@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm --out-dir dist"
+    "build": "tsup src/index.ts --dts --format esm --out-dir dist && npx tsx ./src/fix-sourcemaps.ts"
   },
   "dependencies": {
     "query-string": "^9.2.0"
@@ -24,5 +24,9 @@
     "node": ">=16"
   },
   "license": "MIT",
-  "author": "Cexplorer.io"
+  "author": "Cexplorer.io",
+  "devDependencies": {
+    "@swc/core": "^1.12.1",
+    "@types/node": "^24.0.3"
+  }
 }

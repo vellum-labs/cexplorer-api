@@ -7,6 +7,9 @@
     "strict": true,
     "declaration": true,
     "emitDeclarationOnly": false,
+    "sourceMap": true,
+    "sourceRoot": "./", 
+    "inlineSources": true,
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
@@ -14,5 +17,5 @@
     },
     "outDir": "dist"
   },
-  "include": ["src"]
+  "include": ["src", "fix-sourcemaps.ts"]
 }
