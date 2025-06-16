@@ -30,6 +30,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Fail if version is already published
+        id: version-check
         run: |
           PKG_NAME=$(node -p "require('./package.json').name")
           PKG_VERSION=$(node -p "require('./package.json').version")
