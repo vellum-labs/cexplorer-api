@@ -1,0 +1,57 @@
+name: Manual Publish @vellumlabs/cexplorer-api
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: packages/api
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check if version already published
+        id: version-check
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $PKG_NAME@$PKG_VERSION"
+
+          PUBLISHED_VERSION=$(npm view "$PKG_NAME" version || echo "0.0.0")
+          echo "Published version: $PUBLISHED_VERSION"
+
+          if [ "$PUBLISHED_VERSION" = "$PKG_VERSION" ]; then
+            echo "Version already published, skipping publish."
+            echo "should_skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build package
+        if: steps.version-check.outputs.should_skip == 'false'
+        run: pnpm build
+
+      - name: Publish to npm
+        if: steps.version-check.outputs.should_skip == 'false'
+        run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
