@@ -29,21 +29,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Check if version already published
-        id: version-check
+      - name: Fail if version is already published
         run: |
           PKG_NAME=$(node -p "require('./package.json').name")
           PKG_VERSION=$(node -p "require('./package.json').version")
-          echo "Current version: $PKG_NAME@$PKG_VERSION"
+          echo "Checking if $PKG_NAME@$PKG_VERSION is already published..."
 
           PUBLISHED_VERSION=$(npm view "$PKG_NAME" version || echo "0.0.0")
-          echo "Published version: $PUBLISHED_VERSION"
+          echo "Latest published version: $PUBLISHED_VERSION"
 
           if [ "$PUBLISHED_VERSION" = "$PKG_VERSION" ]; then
-            echo "Version already published, skipping publish."
-            echo "should_skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "should_skip=false" >> $GITHUB_OUTPUT
+            echo "❌ Version $PKG_VERSION is already published on npm!"
+            exit 1
           fi
 
       - name: Build package
