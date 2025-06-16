@@ -30,7 +30,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Fail if version is already published
-        id: version-check
         run: |
           PKG_NAME=$(node -p "require('./package.json').name")
           PKG_VERSION=$(node -p "require('./package.json').version")
@@ -45,11 +44,9 @@ jobs:
           fi
 
       - name: Build package
-        if: steps.version-check.outputs.should_skip == 'false'
         run: pnpm build
 
       - name: Publish to npm
-        if: steps.version-check.outputs.should_skip == 'false'
         run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
