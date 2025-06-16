@@ -61,16 +61,20 @@ const fetchWithTimeout = (url: string, timeout: number, options?: RequestInit): 
  * @throws {Error} If the request fails or all retries are exhausted
  */
 export const handleFetch = async <T>(url: string, prevOffset?: number, options?: FetchOptions): Promise<T & { prevOffset: number | undefined }> => {
-  const { network } = getCexplorerConfig();
+  const { network, apiKey } = getCexplorerConfig();
 
   if (!network) {
     throw new Error('Missing required "network" in config.');
   }
 
+  if (!apiKey) {
+    throw new Error('Missing required "apiKey" in config.');
+  }
+
   const fullUrl = getUrl(url, network, options?.params);
   const timeout = options?.timeout ?? 30000;
   const retryCount = options?.retryCount ?? 2;
-  const headers = options?.headers;
+  const headers = { ...options?.headers, "api-key": apiKey };
   const body = options?.body;
   const method = options?.method ?? "GET";
 

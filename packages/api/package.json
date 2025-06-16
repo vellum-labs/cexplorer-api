@@ -1,6 +1,6 @@
 {
-  "name": "@vellumlabs/cex-api",
-  "version": "1.0.1",
+  "name": "@vellumlabs/cexplorer-api",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

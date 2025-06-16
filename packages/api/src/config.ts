@@ -17,7 +17,7 @@ let currentConfig: CexplorerConfig | null = null;
  * @param config - Partial configuration object containing at least the network
  * @throws If the `network` field is missing
  */
-export const initApi = (config: Partial<CexplorerConfig>) => {
+export const initApi = (config: CexplorerConfig) => {
   if (!config.network) {
     throw new Error('Missing required "network" in config.');
   }
