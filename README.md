@@ -263,9 +263,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 🔗 Links
 
 - [Cexplorer.io](https://beta.cexplorer.io) - Cardano blockchain explorer
-- [API Documentation](https://docs.cexplorer.io) - Full API reference
 - [NPM Package](https://www.npmjs.com/package/@vellumlabs/cexplorer-api)
-- [Issues](https://github.com/vellumlabs/cexplorer-api/issues) - Report bugs
+- [Issues](https://github.com/vellum-labs/cexplorer-api/issues) - Report bugs
 
 ## 📊 More Examples
 
