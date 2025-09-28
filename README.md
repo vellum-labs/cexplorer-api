@@ -271,11 +271,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 Check the [examples/](examples/) directory for more comprehensive usage examples:
 
-- [Basic Usage](examples/basic-usage.md)
-- [Advanced Queries](examples/advanced-queries.md)
-- [Error Handling](examples/error-handling.md)
-- [Integration Patterns](examples/integration-patterns.md)
-
 ---
 
 Built with ❤️ for the Cardano ecosystem
