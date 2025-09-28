@@ -1,6 +1,6 @@
 export type Network = "mainnet-stage" | "preprod-stage" | "preview-stage";
 
 export interface CexplorerConfig {
-  network?: Network;
+  network: Network;
   apiKey: string;
 }
