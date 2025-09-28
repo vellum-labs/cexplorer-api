@@ -64,11 +64,11 @@ export const handleFetch = async <T>(url: string, prevOffset?: number, options?:
   const { network, apiKey } = getCexplorerConfig();
 
   if (!network) {
-    throw new Error('Missing required "network" in config.');
+    throw new Error('SDK not initialized or missing network. Call initApi({ network: "your-network", apiKey: "your-key" }) first.');
   }
 
   if (!apiKey) {
-    throw new Error('Missing required "apiKey" in config.');
+    throw new Error("Missing API key. Get your API key from https://beta.cexplorer.io -> Profile -> API and initialize SDK with initApi().");
   }
 
   const fullUrl = getUrl(url, network, options?.params);
