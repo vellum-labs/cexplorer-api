@@ -7,10 +7,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: packages/api
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
