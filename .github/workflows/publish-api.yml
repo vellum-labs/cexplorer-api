@@ -4,6 +4,17 @@ on:
   workflow_dispatch:
 
 jobs:
+  CheckUser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if user is allowed to run this workflow
+        run: |
+          echo "Triggered by: ${{ github.actor }}"
+          if [ "${{ github.actor }}" != "josef0xb" ] && [ "${{ github.actor }}" != "dshamsani" ]; then
+            echo "❌ You are not allowed to run this workflow."
+            exit 1
+          fi
+
   publish:
     runs-on: ubuntu-latest
 
