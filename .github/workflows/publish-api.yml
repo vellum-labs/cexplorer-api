@@ -53,6 +53,13 @@ jobs:
       - name: Build package
         run: pnpm build
 
+      - name: Configure npm
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish to npm
         run: pnpm publish --access public
         env:
