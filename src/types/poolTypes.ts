@@ -107,11 +107,21 @@ export interface PoolsListResponse {
     data: PoolData[];
   };
 }
+
+export interface PoolMetaExtended {
+  github_handle?: string;
+  twitch_handle?: string;
+  discord_handle?: string;
+  twitter_handle?: string;
+  youtube_handle?: string;
+  facebook_handle?: string;
+  telegram_handle?: string;
+}
 export interface PoolMeta {
   ticker: string;
   name: string;
   description: string;
-  extended: null;
+  extended: PoolMetaExtended | null;
   homepage: string;
 }
 
@@ -120,8 +130,7 @@ export type PoolInfo = {
   meta: PoolMeta | null;
 };
 
-export interface PoolDetailResponseData
-  extends Omit<PoolData, "pool_id_hash_raw" | "active_epochs"> {
+export interface PoolDetailResponseData extends Omit<PoolData, "pool_id_hash_raw" | "active_epochs"> {
   epochs: PoolEpoch[];
   hash_raw: string;
   active_epochs: number | undefined;
@@ -468,7 +477,6 @@ export type PoolRegistrationsResponse = ResponseCore<{
   data: PoolRegistrationsData[];
 }>;
 
-
 export interface TopMultiDelegators {
   payment_cred: string;
   stake: {
@@ -515,4 +523,3 @@ export interface DrepNotSpoSameTime {
 }
 
 export type DrepNotSpoSameTimeResponse = ResponseCore<DrepNotSpoSameTime[]>;
-
