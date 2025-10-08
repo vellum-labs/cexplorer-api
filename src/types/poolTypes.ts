@@ -387,7 +387,7 @@ export interface EpochInfo {
 export interface PoolName {
   name: string | null;
   ticker: string | null;
-  extended: string | null;
+  extended: PoolMetaExtended | null;
   homepage: string | null;
   description: string | null;
 }
