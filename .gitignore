@@ -4,3 +4,6 @@ dist
 **/dist
 
 .vscode
+
+# Turborepo
+.turbo
