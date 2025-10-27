@@ -38,8 +38,8 @@ jobs:
 
       - name: Fail if version is already published
         run: |
-          PKG_NAME=$(node -p "require('./package.json').name")
-          PKG_VERSION=$(node -p "require('./package.json').version")
+          PKG_NAME=$(node -p "require('./packages/cexplorer-api/package.json').name")
+          PKG_VERSION=$(node -p "require('./packages/cexplorer-api/package.json').version")
           echo "Checking if $PKG_NAME@$PKG_VERSION is already published..."
 
           PUBLISHED_VERSION=$(npm view "$PKG_NAME" version || echo "0.0.0")
@@ -51,7 +51,7 @@ jobs:
           fi
 
       - name: Build package
-        run: pnpm build
+        run: pnpm --filter @vellumlabs/cexplorer-api build
 
       - name: Configure npm
         run: |
@@ -61,6 +61,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm
-        run: npm publish --access public
+        run: cd packages/cexplorer-api && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
