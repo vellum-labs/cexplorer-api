@@ -38,8 +38,10 @@ pub struct AssetRegistry {
     pub name: String,
     pub decimals: Option<u64>,
     pub has_logo: bool,
-    pub description: String,
-    pub url: String,
+    #[serde(default)]
+    pub description: Option<String>,
+    #[serde(default)]
+    pub url: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
