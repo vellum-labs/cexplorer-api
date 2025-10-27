@@ -187,10 +187,10 @@ pub struct AddressUTXO {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AddressInspector {
     pub address: String,
-    pub magic: u64,
-    pub header: u64,
-    pub payment: String,
-    pub stake: String,
+    pub magic: Option<u64>,
+    pub header: Option<u64>,
+    pub payment: Option<String>,
+    pub stake: Option<String>,
 }
 
 pub type AddressDetailResponse = ResponseCore<AddressDetail>;

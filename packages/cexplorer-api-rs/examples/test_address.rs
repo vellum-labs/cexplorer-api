@@ -6,7 +6,7 @@ use cexplorer_api_rs::{
 #[tokio::main]
 async fn main() {
     // Initialize API
-    match init_api("preprod-stage", "your-api-key-here") {
+    match init_api("mainnet-stage", "your-api-key-here") {
         Ok(_) => println!("✓ API initialized"),
         Err(e) => {
             eprintln!("✗ Initialization error: {}", e);
@@ -14,18 +14,18 @@ async fn main() {
         }
     }
 
-    // Test address (Cardano preprod testnet)
-    let test_address = "addr_test1qz7s6z0x4pk7wvqf2hzk8mz0yvujv0g9g4wzvvkvnz4j0j3h2xy2m5xyylhvkhs8p9wshfxg9lrwh3v7d5rq3r8vvqsk0vy6z";
+    // Test address (Cardano mainnet)
+    let test_address = "addr1q8elqhkuvtyelgcedpup58r893awhg3l87a4rz5d5acatuj9y84nruafrmta2rewd5l46g8zxy4l49ly8kye79ddr3ksqal35g";
 
     // Test 1: Inspect address
     println!("\n--- Test inspect_address ---");
     match inspect_address(test_address).await {
         Ok(response) => {
             println!("✓ Address inspected successfully");
-            println!("  Magic: {}", response.data.magic);
-            println!("  Header: {}", response.data.header);
-            println!("  Payment: {}", response.data.payment);
-            println!("  Stake: {}", response.data.stake);
+            println!("  Magic: {:?}", response.data.magic);
+            println!("  Header: {:?}", response.data.header);
+            println!("  Payment: {:?}", response.data.payment);
+            println!("  Stake: {:?}", response.data.stake);
         }
         Err(e) => eprintln!("✗ Error: {}", e),
     }
