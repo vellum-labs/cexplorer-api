@@ -8,7 +8,9 @@ pub mod account_types;
 pub mod address_types;
 
 pub use pool_types::{PoolInfo, PoolMeta, PoolMetaExtended};
-pub use epoch_types::EpochParam;
+pub use epoch_types::{
+    EpochParam, EpochListResponse, EpochDetailParamResponse, EpochDetailStatsResponse
+};
 pub use tx_types::{
     BlockBasicInfo, TxBasicInfo, TxInfo, Withdrawal,
     TxAsset, AssetRegistry, Mint, ReferenceScript,

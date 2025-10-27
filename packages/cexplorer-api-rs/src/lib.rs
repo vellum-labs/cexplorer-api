@@ -11,8 +11,12 @@ pub use endpoints::address::{
     get_address_detail, get_address_list, get_address_utxo,
     inspect_address, AddressListParams
 };
+pub use endpoints::epoch::{
+    get_epoch_list, get_epoch_detail_param, get_epoch_detail_stats
+};
 pub use types::{
     BlockDetailResponse, BlocksListResponse,
     AddressDetailResponse, AddressDetailUTXOResponse,
-    AddressListResponse, AddressInspectorResponse
+    AddressListResponse, AddressInspectorResponse,
+    EpochListResponse, EpochDetailParamResponse, EpochDetailStatsResponse
 };
