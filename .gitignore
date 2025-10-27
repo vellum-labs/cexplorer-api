@@ -7,3 +7,8 @@ dist
 
 # Turborepo
 .turbo
+
+# Rust
+target
+Cargo.lock
+**/*.rs.bk
