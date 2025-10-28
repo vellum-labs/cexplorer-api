@@ -595,3 +595,34 @@ pub type PoolBirthdaysResponse = ResponseCore<Vec<PoolBirthday>>;
 pub type TopMultiDelegatorsResponse = ResponseCore<TopMultiDelegators>;
 pub type DelegEpochRegisteredResponse = ResponseCore<Vec<DelegEpochRegisteredItem>>;
 pub type StakeDrepsNotSpoResponse = ResponseCore<Vec<StakeDrepsNotSpoItem>>;
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PoolRegistrationsData {
+    pub tx: Value,
+    pub data: Value,
+    pub block: Value,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PoolRegistrationsResponseData {
+    #[serde(default)]
+    pub count: Option<f64>,
+    pub data: Vec<PoolRegistrationsData>,
+}
+
+pub type PoolRegistrationsResponse = ResponseCore<PoolRegistrationsResponseData>;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct DrepNotSpoSameTime {
+    #[serde(default)]
+    pub epoch_no: Option<f64>,
+    #[serde(default)]
+    pub count: Option<f64>,
+    #[serde(default)]
+    pub stake: Option<f64>,
+    #[serde(default)]
+    pub delegator: Option<f64>,
+    #[serde(default)]
+    pub total: Option<Value>,
+}
+
+pub type DrepNotSpoSameTimeResponse = ResponseCore<Vec<DrepNotSpoSameTime>>;
