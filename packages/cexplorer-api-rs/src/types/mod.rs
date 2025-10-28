@@ -7,7 +7,14 @@ pub mod user_types;
 pub mod account_types;
 pub mod address_types;
 
-pub use pool_types::{PoolInfo, PoolMeta, PoolMetaExtended};
+pub use pool_types::{
+    PoolInfo, PoolMeta, PoolMetaExtended,
+    PoolsListResponse, PoolDetailResponse, PoolRewardsResponse,
+    PoolBlocksResponse, PoolDelegatorsResponse, PoolUpdateResponse,
+    PoolAwardsResponse, PoolDelegatorStatsResponse, PoolAboutResponse,
+    TopMarginsWithDelegatorsResponse, RetiredPoolsResponse, PoolBirthdaysResponse,
+    TopMultiDelegatorsResponse, DelegEpochRegisteredResponse, StakeDrepsNotSpoResponse
+};
 pub use epoch_types::{
     EpochParam, EpochListResponse, EpochDetailParamResponse, EpochDetailStatsResponse
 };
