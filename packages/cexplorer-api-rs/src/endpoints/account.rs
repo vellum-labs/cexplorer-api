@@ -27,6 +27,14 @@ pub struct WithdrawalParams {
     pub offset: Option<u64>,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DelegationVoteParams {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub limit: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offset: Option<u64>,
+}
+
 pub async fn get_account_rewards(
     view: &str,
     limit: Option<u64>,
@@ -63,4 +71,16 @@ pub async fn get_withdrawals(
         offset,
     };
     fetch_with_params::<WithdrawalsResponse, WithdrawalParams>(endpoint, Some(&params)).await
+}
+
+pub async fn get_delegation_vote(
+    limit: Option<u64>,
+    offset: Option<u64>,
+) -> Result<DrepDelegationResponse, CexplorerError> {
+    let endpoint = "/account/delegation_vote";
+    let params = DelegationVoteParams {
+        limit,
+        offset,
+    };
+    fetch_with_params::<DrepDelegationResponse, DelegationVoteParams>(endpoint, Some(&params)).await
 }

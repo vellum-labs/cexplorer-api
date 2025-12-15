@@ -8,6 +8,8 @@ import type {
   MiscSearchResponse,
   MiscValidateResponse,
   PollListResponse,
+  MiscHealthResponse,
+  MiscProtocolParametersResponse,
 } from "@/types/miscTypes";
 import type { Locales } from "@/types/storeTypes";
 
@@ -178,4 +180,33 @@ export const miscValidate = async (type: GroupType | undefined, ident: string) =
   };
 
   return handleFetch<MiscValidateResponse>(url, undefined, options);
+};
+
+/**
+ * Fetches the health status of the Cexplorer API.
+ *
+ * This endpoint is used for health checks and monitoring purposes.
+ *
+ * @returns {Promise<MiscHealthResponse>} A promise resolving to the health status.
+ *
+ * @throws Will throw an error if the API request fails.
+ */
+export const getMiscHealth = async () => {
+  const url = "/misc/health";
+  return handleFetch<MiscHealthResponse>(url, undefined, {});
+};
+
+/**
+ * Fetches the current protocol parameters from the Cardano blockchain.
+ *
+ * Protocol parameters include various configuration values that govern
+ * the behavior of the blockchain.
+ *
+ * @returns {Promise<MiscProtocolParametersResponse>} A promise resolving to the protocol parameters.
+ *
+ * @throws Will throw an error if the API request fails.
+ */
+export const getMiscProtocolParameters = async () => {
+  const url = "/misc/protocol_parameters";
+  return handleFetch<MiscProtocolParametersResponse>(url, undefined, {});
 };

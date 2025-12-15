@@ -263,3 +263,11 @@ pub async fn get_stake_dreps_not_spo() -> Result<StakeDrepsNotSpoResponse, Cexpl
     let endpoint = "/analytics/stake?type=stake_dreps_not_spo";
     fetch::<StakeDrepsNotSpoResponse>(endpoint).await
 }
+
+pub async fn get_pool_retire(pool_id: &str) -> Result<PoolRetireResponse, CexplorerError> {
+    let endpoint = "/pool/retire";
+    let params = PoolIdParams {
+        pool_id: pool_id.to_string(),
+    };
+    fetch_with_params::<PoolRetireResponse, PoolIdParams>(endpoint, Some(&params)).await
+}

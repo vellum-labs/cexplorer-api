@@ -1,4 +1,5 @@
 import type { AccountRewardResponse, CheckDelegationResponse, WithdrawalsResponse } from "@/types/accountTypes";
+import type { DelegationResponse } from "@/types/delegationTypes";
 
 import { handleFetch } from "@/lib/handleFetch";
 import type { AddressDetailParams } from "./stake";
@@ -90,4 +91,35 @@ export const getWithrawals = async ({ view, limit = 20, offset = 0 }: AddressDet
   };
 
   return handleFetch<WithdrawalsResponse>(url, offset, options);
+};
+
+/**
+ * Fetches DRep delegation information.
+ *
+ * This function retrieves the list of DRep delegations, supporting pagination
+ * through `limit` and `offset` parameters.
+ *
+ * @example
+ * ```ts
+ * const data = await getDelegationVote({ limit: 20, offset: 0 });
+ * ```
+ *
+ * @param {Object} args - Parameters for the request.
+ * @param {number} [args.limit=20] - Maximum number of results to return.
+ * @param {number} [args.offset=0] - Number of items to skip (for pagination).
+ *
+ * @returns {Promise<DelegationResponse>} A promise resolving to the DRep delegation data.
+ * @throws If the request fails or the response is invalid.
+ */
+export const getDelegationVote = async ({ limit = 20, offset = 0 }: { limit?: number; offset?: number } = {}) => {
+  const url = `/account/delegation_vote`;
+
+  const options = {
+    params: {
+      limit,
+      offset,
+    },
+  };
+
+  return handleFetch<DelegationResponse>(url, offset, options);
 };

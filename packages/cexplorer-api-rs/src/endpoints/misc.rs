@@ -90,3 +90,13 @@ pub async fn misc_validate(
     };
     fetch_with_params::<MiscValidateResponse, MiscValidateParams>(endpoint, Some(&params)).await
 }
+
+pub async fn get_misc_health() -> Result<MiscHealthResponse, CexplorerError> {
+    let endpoint = "/misc/health";
+    fetch::<MiscHealthResponse>(endpoint).await
+}
+
+pub async fn get_misc_protocol_parameters() -> Result<MiscProtocolParametersResponse, CexplorerError> {
+    let endpoint = "/misc/protocol_parameters";
+    fetch::<MiscProtocolParametersResponse>(endpoint).await
+}

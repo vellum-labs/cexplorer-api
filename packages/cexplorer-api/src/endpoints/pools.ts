@@ -13,6 +13,7 @@ import type {
   StakeDrepsNotSpoResponse,
   TopMarginsWithDelegatorsResponse,
   TopMultiDelegatorsResponse,
+  PoolRetireResponse,
 } from "@/types/poolTypes";
 
 import { handleFetch } from "@/lib/handleFetch";
@@ -439,4 +440,25 @@ export const getStakeDrepsNotSpo = () => {
   const url = "/analytics/stake?type=stake_dreps_not_spo";
 
   return handleFetch<StakeDrepsNotSpoResponse>(url);
+};
+
+/**
+ * Fetches retirement information for a specific pool.
+ *
+ * @param {string} poolId - The pool identifier.
+ *
+ * @returns {Promise<PoolRetireResponse>} A promise resolving to the pool retirement data.
+ *
+ * @throws Will throw an error if the fetch operation fails.
+ */
+export const getPoolRetire = (poolId: string) => {
+  const url = "/pool/retire";
+
+  const options = {
+    params: {
+      pool_id: poolId,
+    },
+  };
+
+  return handleFetch<PoolRetireResponse>(url, undefined, options);
 };

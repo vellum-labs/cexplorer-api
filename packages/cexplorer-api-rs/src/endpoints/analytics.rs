@@ -97,3 +97,8 @@ pub async fn get_average_pool() -> Result<AveragePoolResponse, CexplorerError> {
     let endpoint = "/analytics/avg_pool?type=avg_num_per_pool";
     fetch::<AveragePoolResponse>(endpoint).await
 }
+
+pub async fn get_genesis_addr() -> Result<GenesisAddrResponse, CexplorerError> {
+    let endpoint = "/analytics/genesis_addr";
+    fetch::<GenesisAddrResponse>(endpoint).await
+}

@@ -18,6 +18,8 @@ pub mod treasury;
 pub mod token;
 pub mod wallet;
 pub mod tx;
+pub mod governance;
+pub mod tool;
 
 pub use block::{get_block_detail, get_block_list, BlockListParams};
 pub use address::{
@@ -32,15 +34,15 @@ pub use pools::{
     get_pools_list, get_pools_birthdays, get_pool_update, get_pool_awards,
     get_pool_delegators_stats, get_global_pool_awards, get_pool_about,
     get_top_margins_with_delegators, get_retired_pools, get_top_multi_delegators,
-    get_deleg_epoch_registered, get_stake_dreps_not_spo
+    get_deleg_epoch_registered, get_stake_dreps_not_spo, get_pool_retire
 };
 pub use analytics::{
     get_hardforks, get_epoch_analytics, get_analytics_rate, get_analytics_pool_block,
     get_analytics_staking_accounts, get_analytics_top_addresses, get_wealth_composition,
-    get_ada_pots, get_group_list, get_group_detail, get_average_pool
+    get_ada_pots, get_group_list, get_group_detail, get_average_pool, get_genesis_addr
 };
 pub use account::{
-    get_account_rewards, check_user_delegation, get_withdrawals
+    get_account_rewards, check_user_delegation, get_withdrawals, get_delegation_vote
 };
 pub use article::{
     get_article_detail, get_article_list
@@ -68,7 +70,8 @@ pub use scripts::{
 };
 pub use misc::{
     get_misc_api, get_misc_basic, get_misc_rate, get_misc_const,
-    get_misc_market, get_misc_search, get_poll_list, misc_validate
+    get_misc_market, get_misc_search, get_poll_list, misc_validate,
+    get_misc_health, get_misc_protocol_parameters
 };
 pub use stake::get_stake_detail;
 pub use treasury::get_treasury_donation_stats;
@@ -81,3 +84,9 @@ pub use tx::{
     get_drep_updates, get_pool_registrations, get_pool_deregistrations,
     get_stake_registrations, get_contract_transactions
 };
+pub use governance::{
+    get_gov_action_proposal_list, get_gov_action_proposal_detail, get_gov_vote,
+    get_gov_vote_not, get_committee_list, get_committee_detail, get_committee_member,
+    get_constitution_list, get_thresholds, get_drep_list_vote
+};
+pub use tool::send_tx_sent;

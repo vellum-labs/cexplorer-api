@@ -2,7 +2,7 @@ import { initApi, getCexplorerConfig } from "@/config";
 
 import { getBlockList, getBlockDetail } from "@/endpoints/block";
 
-import { checkUserDelegation, getAccountRewards, getWithrawals } from "@/endpoints/account";
+import { checkUserDelegation, getAccountRewards, getWithrawals, getDelegationVote } from "@/endpoints/account";
 
 import { getAddressDetail, getAddressList, getAddressUTXO, inspectAddress } from "@/endpoints/address";
 
@@ -18,6 +18,7 @@ import {
   getGroupList,
   getHardforks,
   getWealthComposition,
+  getGenesisAddr,
 } from "@/endpoints/analytics";
 
 import { getArticleDetail, getArticleList } from "@/endpoints/article";
@@ -58,7 +59,7 @@ import { getEpochDetailParam, getEpochDetailStats, getEpochList } from "@/endpoi
 
 import { getMetadataTxList } from "@/endpoints/metadata";
 
-import { getMiscApi, getMiscBasic, getMiscConst, getMiscMarket, getMiscRate, getMiscSearch, getPollList, miscValidate } from "@/endpoints/misc";
+import { getMiscApi, getMiscBasic, getMiscConst, getMiscMarket, getMiscRate, getMiscSearch, getPollList, miscValidate, getMiscHealth, getMiscProtocolParameters } from "@/endpoints/misc";
 
 import { getPolicyDetail, getPolicyOwner, getPolicyStats } from "@/endpoints/policy";
 
@@ -79,6 +80,7 @@ import {
   getStakeDrepsNotSpo,
   getTopMarginsWithDelegators,
   getTopMultiDelegators,
+  getPoolRetire,
 } from "@/endpoints/pools";
 
 import { getScriptDetail, getScriptDetailRedeemer, getScriptList } from "@/endpoints/scripts";
@@ -102,6 +104,21 @@ import {
 } from "@/endpoints/tx";
 
 import { compareWallets } from "@/endpoints/wallet";
+
+import {
+  getGovActionProposalList,
+  getGovActionProposalDetail,
+  getGovVote,
+  getGovVoteNot,
+  getCommitteeList,
+  getCommitteeDetail,
+  getCommitteeMember,
+  getConstitutionList,
+  getThresholds,
+  getDrepListVote,
+} from "@/endpoints/governance";
+
+import { sendTxSent } from "@/endpoints/tool";
 
 export {
   initApi,
@@ -142,6 +159,7 @@ export {
   getStakeDrepsNotSpo,
   getTopMarginsWithDelegators,
   getTopMultiDelegators,
+  getPoolRetire,
   getPolicyDetail,
   getPolicyOwner,
   getPolicyStats,
@@ -152,6 +170,8 @@ export {
   getMiscRate,
   getMiscSearch,
   getPollList,
+  getMiscHealth,
+  getMiscProtocolParameters,
   getMetadataTxList,
   getEpochDetailParam,
   getEpochDetailStats,
@@ -202,5 +222,18 @@ export {
   getGroupList,
   getHardforks,
   getWealthComposition,
+  getGenesisAddr,
   getWithrawals,
+  getDelegationVote,
+  getGovActionProposalList,
+  getGovActionProposalDetail,
+  getGovVote,
+  getGovVoteNot,
+  getCommitteeList,
+  getCommitteeDetail,
+  getCommitteeMember,
+  getConstitutionList,
+  getThresholds,
+  getDrepListVote,
+  sendTxSent,
 };

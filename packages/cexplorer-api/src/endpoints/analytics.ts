@@ -10,6 +10,7 @@ import type {
   GroupsListResponse,
   HardforkResponse,
   WealthCompositionResponse,
+  GenesisAddrResponse,
 } from "@/types/analyticsTypes";
 
 import { handleFetch } from "@/lib/handleFetch";
@@ -285,4 +286,23 @@ export const getAveragePool = async () => {
   const url = "/analytics/avg_pool?type=avg_num_per_pool";
 
   return handleFetch<AveragePoolResponse>(url);
+};
+
+/**
+ * Fetches genesis address analytics from the Cexplorer API.
+ *
+ * This endpoint provides information about genesis addresses on the Cardano blockchain.
+ *
+ * @example
+ * ```ts
+ * const genesisData = await getGenesisAddr();
+ * ```
+ *
+ * @returns {Promise<GenesisAddrResponse>} A promise resolving to the genesis address data.
+ * @throws If the fetch request fails or returns an error response.
+ */
+export const getGenesisAddr = async () => {
+  const url = "/analytics/genesis_addr";
+
+  return handleFetch<GenesisAddrResponse>(url);
 };
