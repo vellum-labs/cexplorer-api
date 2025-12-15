@@ -10,7 +10,7 @@ import type {
   GroupsListResponse,
   HardforkResponse,
   WealthCompositionResponse,
-  GenesisAddrResponse,
+  GenesisAddressResponse,
 } from "@/types/analyticsTypes";
 
 import { handleFetch } from "@/lib/handleFetch";
@@ -304,5 +304,5 @@ export const getAveragePool = async () => {
 export const getGenesisAddr = async () => {
   const url = "/analytics/genesis_addr";
 
-  return handleFetch<GenesisAddrResponse>(url);
+  return handleFetch<GenesisAddressResponse>(url);
 };

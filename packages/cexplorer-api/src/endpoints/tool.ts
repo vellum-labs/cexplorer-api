@@ -16,11 +16,7 @@ import { handleFetch } from "@/lib/handleFetch";
  *
  * @throws Will throw an error if the API request fails.
  */
-export const sendTxSent = async (
-  hash: string,
-  poolId: string,
-  type: "delegation" | "donate" = "delegation",
-) => {
+export const sendTxSent = async (hash: string, poolId: string, type: "delegation" | "donate" = "delegation") => {
   const url = "/tool/tx_sent";
   const options = {
     params: {

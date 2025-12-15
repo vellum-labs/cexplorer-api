@@ -302,6 +302,31 @@ interface MiscValidate {
   valid: boolean;
 }
 
+interface MaterializedView {
+  name: string;
+  has_indexes: boolean;
+  is_populated: boolean;
+}
+
+interface CexplorerData {
+  now: string;
+  runner: string;
+  pool_stat: number;
+  milestone: number;
+  rate: string;
+  views: MaterializedView[];
+}
+
+interface BlockchainData {
+  time: string;
+  epoch_no: number;
+}
+
+interface HealthData {
+  blockchain: BlockchainData;
+  cexplorer: CexplorerData;
+}
+
 export type MiscValidateResponse = ResponseCore<MiscValidate>;
 export type PollListResponse = ResponseCore<Poll[]>;
 export type MiscConstResponse = ResponseCore<MiscConstResponseData>;
@@ -311,3 +336,38 @@ export type MiscSearchResponse = ResponseCore<MiscSearch[] | MiscSearch>;
 export type MiscApiResponse = ResponseCore<{
   plans: MiscApiData;
 }>;
+
+export interface MiscHealthResponse {
+  license: string;
+  code: number;
+  data: {
+    is_healthy: boolean;
+    data: HealthData[];
+    err: string[];
+  };
+  tokens: number;
+  ex: number;
+  debug: boolean;
+}
+
+export interface MiscProtocolParameters {
+  min_fee_a: number;
+  min_fee_b: number;
+  max_tx_size: number;
+  max_val_size: number;
+  key_deposit: number;
+  pool_deposit: number;
+  price_mem: number;
+  price_step: number;
+  max_tx_ex_mem: number;
+  max_tx_ex_steps: number;
+  coins_per_utxo_byte: number;
+  collateral_percentage: number;
+  max_collateral_inputs: number;
+  min_fee_ref_script_cost_per_byte: number;
+  cost_models: {
+    [key: string]: number[];
+  };
+}
+
+export type MiscProtocolParametersResponse = ResponseCore<MiscProtocolParameters>;

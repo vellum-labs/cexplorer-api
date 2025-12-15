@@ -59,7 +59,18 @@ import { getEpochDetailParam, getEpochDetailStats, getEpochList } from "@/endpoi
 
 import { getMetadataTxList } from "@/endpoints/metadata";
 
-import { getMiscApi, getMiscBasic, getMiscConst, getMiscMarket, getMiscRate, getMiscSearch, getPollList, miscValidate, getMiscHealth, getMiscProtocolParameters } from "@/endpoints/misc";
+import {
+  getMiscApi,
+  getMiscBasic,
+  getMiscConst,
+  getMiscMarket,
+  getMiscRate,
+  getMiscSearch,
+  getPollList,
+  miscValidate,
+  getMiscHealth,
+  getMiscProtocolParameters,
+} from "@/endpoints/misc";
 
 import { getPolicyDetail, getPolicyOwner, getPolicyStats } from "@/endpoints/policy";
 
@@ -108,14 +119,11 @@ import { compareWallets } from "@/endpoints/wallet";
 import {
   getGovActionProposalList,
   getGovActionProposalDetail,
-  getGovVote,
-  getGovVoteNot,
   getCommitteeList,
   getCommitteeDetail,
   getCommitteeMember,
   getConstitutionList,
   getThresholds,
-  getDrepListVote,
 } from "@/endpoints/governance";
 
 import { sendTxSent } from "@/endpoints/tool";
@@ -227,13 +235,10 @@ export {
   getDelegationVote,
   getGovActionProposalList,
   getGovActionProposalDetail,
-  getGovVote,
-  getGovVoteNot,
   getCommitteeList,
   getCommitteeDetail,
   getCommitteeMember,
   getConstitutionList,
   getThresholds,
-  getDrepListVote,
   sendTxSent,
 };

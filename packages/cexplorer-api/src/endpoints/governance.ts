@@ -1,13 +1,11 @@
 import type {
   GovernanceActionListResponse,
   GovernanceActionDetailResponse,
-  GovVoteResponse,
   CommitteeListResponse,
   CommitteeDetailResponse,
   CCMemberDetailResponse,
   ConstitutionListResponse,
   ThresholdResponse,
-  DrepListVoteResponse,
 } from "@/types/governanceTypes";
 
 import { handleFetch } from "@/lib/handleFetch";
@@ -25,13 +23,7 @@ import { handleFetch } from "@/lib/handleFetch";
  *
  * @throws Will throw an error if the API request fails.
  */
-export const getGovActionProposalList = async (
-  limit?: number,
-  offset?: number,
-  state?: string,
-  search?: string,
-  type?: string,
-) => {
+export const getGovActionProposalList = async (limit?: number, offset?: number, state?: string, search?: string, type?: string) => {
   const url = "/gov/gov_action_proposal_list";
   const options = {
     params: {
@@ -64,101 +56,6 @@ export const getGovActionProposalDetail = async (id: string) => {
   };
 
   return handleFetch<GovernanceActionDetailResponse>(url, undefined, options);
-};
-
-/**
- * Fetches governance votes with optional filters.
- *
- * @param {number} [limit] - Maximum number of votes to return.
- * @param {number} [offset] - Offset for pagination.
- * @param {string} [gov_action_proposal] - Filter by governance action proposal ID.
- * @param {string} [voter_role] - Filter by voter role (e.g., "SPO", "DRep", "ConstitutionalCommittee").
- * @param {string} [order] - Sort order field (e.g., "stake", "represented_by").
- * @param {string} [sort] - Sort direction ("asc" or "desc").
- * @param {string} [vote] - Filter by vote type (e.g., "Yes", "No", "Abstain").
- * @param {string} [search] - Search query string.
- * @param {string} [tx] - Filter by transaction hash.
- * @param {string} [drep_voter] - Filter by DRep voter identifier.
- * @param {string} [pool_voter] - Filter by pool voter identifier.
- * @param {string} [committee_voter] - Filter by committee voter identifier.
- *
- * @returns {Promise<GovVoteResponse>} A promise resolving to the governance votes.
- *
- * @throws Will throw an error if the API request fails.
- */
-export const getGovVote = async (
-  limit?: number,
-  offset?: number,
-  gov_action_proposal?: string,
-  voter_role?: string,
-  order?: string,
-  sort?: string,
-  vote?: string,
-  search?: string,
-  tx?: string,
-  drep_voter?: string,
-  pool_voter?: string,
-  committee_voter?: string,
-) => {
-  const url = "/gov/vote";
-  const options = {
-    params: {
-      limit,
-      offset,
-      gov_action_proposal,
-      voter_role,
-      order,
-      sort,
-      vote,
-      search,
-      tx,
-      drep_voter,
-      pool_voter,
-      committee_voter,
-    },
-  };
-
-  return handleFetch<GovVoteResponse>(url, undefined, options);
-};
-
-/**
- * Fetches voters who have NOT voted on a governance action.
- *
- * @param {number} [limit] - Maximum number of non-voters to return.
- * @param {number} [offset] - Offset for pagination.
- * @param {string} [gov_action_proposal] - Filter by governance action proposal ID.
- * @param {string} [voter_role] - Filter by voter role.
- * @param {string} [order] - Sort order field.
- * @param {string} [sort] - Sort direction ("asc" or "desc").
- * @param {string} [search] - Search query string.
- *
- * @returns {Promise<GovVoteResponse>} A promise resolving to the non-voters list.
- *
- * @throws Will throw an error if the API request fails.
- */
-export const getGovVoteNot = async (
-  limit?: number,
-  offset?: number,
-  gov_action_proposal?: string,
-  voter_role?: string,
-  order?: string,
-  sort?: string,
-  search?: string,
-) => {
-  const url = "/gov/vote_not";
-  const options = {
-    params: {
-      limit,
-      offset,
-      gov_action_proposal,
-      voter_role,
-      order,
-      sort,
-      search,
-    },
-  };
-
-  return handleFetch<GovVoteResponse>(url, undefined, options);
 };
 
 /**
@@ -243,32 +140,4 @@ export const getConstitutionList = async (limit?: number) => {
 export const getThresholds = async () => {
   const url = "/gov/thresholds";
   return handleFetch<ThresholdResponse>(url, undefined, {});
-};
-
-/**
- * Fetches the list of DRep votes for a specific governance action.
- *
- * @param {number} [limit] - Maximum number of DRep votes to return.
- * @param {number} [offset] - Offset for pagination.
- * @param {string} gov_action - The governance action identifier.
- *
- * @returns {Promise<DrepListVoteResponse>} A promise resolving to the DRep vote list.
- *
- * @throws Will throw an error if the API request fails.
- */
-export const getDrepListVote = async (
-  limit?: number,
-  offset?: number,
-  gov_action?: string,
-) => {
-  const url = "/gov/drep_list_vote";
-  const options = {
-    params: {
-      limit,
-      offset,
-      gov_action,
-    },
-  };
-
-  return handleFetch<DrepListVoteResponse>(url, undefined, options);
 };

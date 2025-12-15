@@ -522,4 +522,13 @@ export interface DrepNotSpoSameTime {
   };
 }
 
+export interface PoolRetire {
+  tx_hash: string;
+  cert_index: number;
+  time: string;
+  retiring_epoch: number;
+}
+
 export type DrepNotSpoSameTimeResponse = ResponseCore<DrepNotSpoSameTime[]>;
+
+export type PoolRetireResponse = ResponseCore<PoolRetire[]>;
